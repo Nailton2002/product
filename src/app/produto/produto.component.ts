@@ -36,5 +36,24 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
+  atualizar(produto: Produto): void {
+    this.produto = produto;
+    this.exibirBotao = true;
+  }
+
+  update(produto: Produto): void {
+    this.service.update(produto)
+    .subscribe(() => {
+      this.produto = new Produto();
+      this.exibirBotao = false;
+    });
+  }
+
+  delete(produto: Produto): void {
+    this.service.delete(produto)
+    .subscribe(() => {
+      this.findAll();
+    });
+  }
 
 }

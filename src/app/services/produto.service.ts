@@ -18,5 +18,17 @@ export class ProdutoService {
   findById(produto: Produto): Observable<Produto>{
     return this.http.get<Produto>(`${API_CONFIG.baseUrl}/products/${produto.id}`);
   }
+
+  save(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/products`, produto);
+  }
+
+  update(produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${API_CONFIG.baseUrl}/products`, produto);
+  }
+
+  delete(produto: Produto): Observable<void> {
+    return this.http.delete<void>(`${API_CONFIG.baseUrl}/products/${produto.id}`);
+  }
   
 }
